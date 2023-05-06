@@ -14,6 +14,7 @@ def handler(event, context):
         print(chat_id)
         data = {"text": texts.welcome_message, "chat_id": chat_id}
         url = BASE_URL + '/sendMessage'
+        print(BASE_URL)
         requests.post(url, data)
     except Exception as e:
         print(e)
