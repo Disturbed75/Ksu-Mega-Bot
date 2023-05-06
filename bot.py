@@ -1,26 +1,21 @@
-import os
-# import telebot
-# import texts
-#
-#
-# bot = telebot.TeleBot(BOT_TOKEN)
-#
-#
-# @bot.message_handler(commands=['start', 'hello'])
-# def send_welcome(message):
-#     bot.reply_to(message, texts.welcome_message)
-#
-# @bot.message_handler(func=lambda msg: True)
-# def echo_all(message):
-#     bot.reply_to(message, texts.welcome_message)
-#
-# bot.infinity_polling()
 
+import os
+import json
+import texts
+import requests
+
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
+BASE_URL = "https://api.telegram.org/bot{}".format(BOT_TOKEN)
 
 def handler(event, context):
-
-    BOT_TOKEN = os.environ.get('BOT_TOKEN')
-    print(BOT_TOKEN)
-    print('Lambda works')
-
+    try:
+        income = json.loads(event["body"])
+        chat_id = income["message"]["chat"]["id"]
+        print(chat_id)
+        data = {"text": texts.welcome_message, "chat_id": chat_id}
+        url = BASE_URL + '/sendMessage'
+        requests.post(url, data)
+    except Exception as e:
+        print(e)
+    return {"statusCode": 200}
 
