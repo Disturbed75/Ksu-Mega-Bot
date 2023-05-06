@@ -17,7 +17,6 @@ def handler(event, context):
         print(BASE_URL)
         requests.post(url, data)
     except Exception as e:
-        print("fucking error")
-        print(e.__cause__)
+        print(str(e))
     return {"statusCode": 200}
 
