@@ -18,6 +18,6 @@ def handler(event, context):
         requests.post(url, data)
     except Exception as e:
         print("fucking error")
-        print(e)
+        print(e.__cause__)
     return {"statusCode": 200}
 
