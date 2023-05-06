@@ -2,7 +2,7 @@
 import os
 import json
 import texts
-import requests
+from botocore.vendored import requests
 
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
 BASE_URL = "https://api.telegram.org/bot{}".format(BOT_TOKEN)
