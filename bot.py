@@ -1,9 +1,7 @@
-# import os
+import os
 # import telebot
 # import texts
 #
-# BOT_TOKEN = os.environ.get('BOT_TOKEN')
-# print(BOT_TOKEN)
 #
 # bot = telebot.TeleBot(BOT_TOKEN)
 #
@@ -20,6 +18,9 @@
 
 
 def handler(event, context):
+
+    BOT_TOKEN = os.environ.get('BOT_TOKEN')
+    print(BOT_TOKEN)
     print('Lambda works')
 
 
